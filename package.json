@@ -2,7 +2,7 @@
   "name": "isfs-root-tuner",
   "displayName": "InterSystems Server-Side Workspace Folder Tuner",
   "description": "Dynamically tune InterSystems server-side workspace root folders",
-  "version": "0.0.1-SNAPSHOT",
+  "version": "1.0.0",
   "publisher": "georgejames",
   "engines": {
     "vscode": "^1.92.0"
