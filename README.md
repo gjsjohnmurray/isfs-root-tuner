@@ -1,4 +1,4 @@
-# InterSystems Server-Side Workspace Root Tuner
+# InterSystems Server-Side Workspace Folder Tuner
 
 This extension allows you to tune InterSystems server-side workspace root folders as you work, toggling whether or not they show mapped, generated and system items.
 
@@ -7,7 +7,7 @@ This extension allows you to tune InterSystems server-side workspace root folder
 1. Invoke the context menu on a workspace root folder that accesses code files on an InterSystems server using the isfs or isfs-readonly scheme.
 2. Use the options contributed by this extension to show or hide mapped, generated or system items.
 
-These tuning options do not apply to web application roots or project roots.
+These tuning options do not apply to web application root folders or project root folders.
 
 ## Release Notes
 
