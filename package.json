@@ -1,0 +1,149 @@
+{
+  "name": "isfs-root-tuner",
+  "displayName": "InterSystems Server-Side Workspace Root Tuner",
+  "description": "Dynamically tune InterSystems server-side workspace root folders",
+  "version": "0.0.1-SNAPSHOT",
+  "publisher": "georgejames",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gjsjohnmurray/isfs-root-tuner"
+  },
+"contributors": [
+    {
+      "name": "John Murray",
+      "email": "johnm@georgejames.com"
+    }
+  ],
+  "sponsor": {
+    "url": "https://github.com/sponsors/gjsjohnmurray"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onFileSystem:isfs",
+    "onFileSystem:isfs-readonly"
+  ],
+  "extensionDependencies": [
+    "intersystems-community.vscode-objectscript"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "isfs-root-tuner.showMapped",
+        "title": "Show Mapped Items"
+      },
+      {
+        "command": "isfs-root-tuner.hideMapped",
+        "title": "Hide Mapped Items"
+      },
+      {
+        "command": "isfs-root-tuner.showGenerated",
+        "title": "Show Generated Items"
+      },
+      {
+        "command": "isfs-root-tuner.hideGenerated",
+        "title": "Hide Generated Items"
+      },
+      {
+        "command": "isfs-root-tuner.showSystem",
+        "title": "Show System Items"
+      },
+      {
+        "command": "isfs-root-tuner.hideSystem",
+        "title": "Hide System Items"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "isfs-root-tuner.showMapped",
+          "when": "resourceScheme =~ /^isfs(-readonly)?$/ && explorerResourceIsRoot && !(resource =~ /\\?.*&?csp&?/) && !(resource =~ /\\?.*&?project%3D/) && resource =~ /\\?.*&?mapped%3D0&?/",
+          "group": "2_workspace@-10"
+        },
+        {
+          "command": "isfs-root-tuner.hideMapped",
+          "when": "resourceScheme =~ /^isfs(-readonly)?$/ && explorerResourceIsRoot && !(resource =~ /\\?.*&?csp&?/) && !(resource =~ /\\?.*&?project%3D/) && (resource =~ /\\?.*&?mapped%3D1&?/ || !(resource =~ /\\?.*&?mapped%3D0&?/))",
+          "group": "2_workspace@-10"
+        },
+        {
+          "command": "isfs-root-tuner.showGenerated",
+          "when": "resourceScheme =~ /^isfs(-readonly)?$/ && explorerResourceIsRoot && !(resource =~ /\\?.*&?csp&?/) && !(resource =~ /\\?.*&?project%3D/) && (resource =~ /\\?.*&?generated%3D0&?/ || !(resource =~ /\\?.*&?generated%3D1&?/))",
+          "group": "2_workspace@-8"
+        },
+        {
+          "command": "isfs-root-tuner.hideGenerated",
+          "when": "resourceScheme =~ /^isfs(-readonly)?$/ && explorerResourceIsRoot && !(resource =~ /\\?.*&?csp&?/) && !(resource =~ /\\?.*&?project%3D/) && resource =~ /\\?.*&?generated%3D1&?/",
+          "group": "2_workspace@-8"
+        },
+        {
+          "command": "isfs-root-tuner.showSystem",
+          "when": "resourceScheme =~ /^isfs(-readonly)?$/ && explorerResourceIsRoot && !(resource =~ /\\?.*&?csp&?/) && !(resource =~ /\\?.*&?project%3D/) && (resource =~ /\\?.*&?system%3D0&?/ || !(resource =~ /\\?.*&?system%3D1&?/))",
+          "group": "2_workspace@-8"
+        },
+        {
+          "command": "isfs-root-tuner.hideSystem",
+          "when": "resourceScheme =~ /^isfs(-readonly)?$/ && explorerResourceIsRoot && !(resource =~ /\\?.*&?csp&?/) && !(resource =~ /\\?.*&?project%3D/) && resource =~ /\\?.*&?system%3D1&?/",
+          "group": "2_workspace@-8"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "isfs-root-tuner.showMapped",
+          "when": "false"
+        },
+        {
+          "command": "isfs-root-tuner.hideMapped",
+          "when": "false"
+        },
+        {
+          "command": "isfs-root-tuner.showGenerated",
+          "when": "false"
+        },
+        {
+          "command": "isfs-root-tuner.hideGenerated",
+          "when": "false"
+        },
+        {
+          "command": "isfs-root-tuner.showSystem",
+          "when": "false"
+        },
+        {
+          "command": "isfs-root-tuner.hideSystem",
+          "when": "false"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.92.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.11.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0"
+  }
+}
